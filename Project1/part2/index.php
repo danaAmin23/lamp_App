@@ -2,8 +2,8 @@
 <?php 
 
 /*
-purpose : Lamp2 Project 1,  index page for user to access and edit midpoint data
-author(s) : Dana Amin, Chris Fraser, Darsh Bhatt
+purpose : index page for user to access and edit midpoint data
+author(s) : Dana Amin
 */
   ?>
 <html>
