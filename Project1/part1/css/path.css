@@ -1,0 +1,28 @@
+body{
+	background-image: url("../images/tower.jpg");
+
+};
+
+#txtHint{
+
+	width:80pc;
+
+
+
+}
+
+form{
+
+	margin-top:55px;
+
+}
+
+td{
+	text-align:center;
+}
+
+a,h1{
+
+	font-size:2em;
+	color: white;
+}

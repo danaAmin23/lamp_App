@@ -1,0 +1,411 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<style>
+html{
+  background-image: url("../part1/images/tower.jpg");
+  color: white;
+}
+</style>
+
+<script src="index.php_files/jquery.js"></script>
+
+<!-- Load paths into select via ajax -->
+<script>
+// A) Create a web form that shows the paths available to be edited, options are imported from the database
+$( document ).ready(function() {
+      $.ajax({url: "ajax.php", success: function(result){
+    $("body").html(result);
+  }});
+
+
+
+});//end on ready 
+
+/***********Part 2 - c) on button click display a form that has general path details ****************/
+
+
+function showDetails(){
+  //window.location.replace('details.php');
+
+
+ var btnVal = $("#details").val();
+  
+$.ajax({
+        url: "details.php",
+        type: "post",
+        data: { myNumber: btnVal },
+        success: function (data) {
+          $('body').html(data);
+
+        },
+        error: function() {
+                  alert('failure');
+        }
+
+
+    });//end ajax
+};//end showDetails()
+
+
+function cancelDetails(){
+ 
+var name = $('#pathName').text();
+
+var details = {
+    'name': name
+};
+
+$.ajax({
+        url: "details.php",
+        type: "post",
+        data: { myNumber: details},
+        success: function (data) {
+          $('body').html(data);
+
+        },
+        error: function() {
+                  alert('failure');;
+        }
+
+
+    });//end ajax
+
+};//end cancelDetails()
+
+
+
+function editDetails(){
+
+var name = $('#pathName').text();
+var length = $('#pathLength').val();
+var desc = $('#pathDesc').val();
+var note = $('#pathNote').val();
+var details = {
+
+
+
+
+    'name': name,
+    'length': length,
+    'desc': desc, 
+    'note' : note
+};
+
+
+
+$.ajax({
+        url: "details.php",
+        type: "post",
+        data: { myNumber: details},
+        success: function (data) {
+          $('body').html(data);
+
+        },
+        error: function() {
+                  alert('failure');;
+        }
+
+
+    });//end ajax
+
+
+
+};//end editDetails()
+
+
+function editEndpoints(){
+  //window.location.replace('details.php');
+var name = $('#pathName').text();
+var begDist = $('#begDist').text();
+var begGrndHt = $('#begGrndHt').val();
+var begAH = $('#begAH').val();
+var endDist = $('#endDist').val();
+var endGrndHt = $('#endGrndHt').val();
+var endAH = $('#endAH').val();
+begDist = parseInt(begDist);
+
+var details = {
+
+    'name': name,
+    'begDist': begDist,
+    'begGrndHt': begGrndHt, 
+    'begAH' : begAH,
+    'endDist': endDist,
+    'endGrndHt': endGrndHt, 
+    'endAH' : endAH
+};
+
+
+
+$.ajax({
+        url: "endpoints.php",
+        type: "post",
+        data: { myNumber: details},
+        success: function (data) {
+          $('body').html(data);
+
+        },
+        error: function() {
+                  alert('failure');;
+        }
+
+
+    });//end ajax
+
+};//end editEndpoints()
+
+
+function cancelEndpoints(){
+
+var name = $('#pathName').text();
+
+var details = {
+
+    'name': name
+};
+
+
+
+$.ajax({
+        url: "endpoints.php",
+        type: "post",
+        data: { myNumber: details},
+        success: function (data) {
+          $('body').html(data);
+
+        },
+        error: function() {
+                  alert('failure');;
+        }
+
+
+    });//end ajax
+
+
+};//end cancelEndpoints()
+
+/***********Part 2 - d) on button click display a form that has general path endpoints ****************/
+
+
+function showEndpoints(){
+
+ var name = $("#details").val();
+
+var details = {
+
+    'name': name
+};
+
+
+
+$.ajax({
+        url: "endpoints.php",
+        type: "post",
+        data: { myNumber: details},
+        success: function (data) {
+          $('body').html(data);
+
+        },
+        error: function() {
+                  alert('failure');;
+        }
+
+
+    });//end ajax
+
+
+};//end showEndpoints()
+
+
+
+
+/***********Part 2 - d) on button click display a form that has general path midpoints ****************/
+
+
+function showMidpoints(name){
+
+
+
+var details = {
+
+    'name': name
+};
+
+
+
+$.ajax({
+        url: "midpoints.php",
+        type: "post",
+        data: { myNumber: details},
+        success: function (data) {
+          $('body').html(data);
+
+        },
+        error: function() {
+                  alert('failure');;
+        }//en ajax
+
+
+    });
+
+
+};//end showMidpoints();
+
+
+
+function editMidpoints(){
+  //window.location.replace('details.php');
+var name = $('#nameval').text();
+var begDist = $('#MdptBgnPathDist').text();
+var grndHt = $('#MdptGrndHt').val();
+var terType = $('#MdptTerrainType').val();
+var obsHt = $('#MdptObsHt').val();
+var obsType = $('#MdptObsType').val();
+begDist = parseInt(begDist);
+
+var details = {
+
+    'name': name,
+    'begDist': begDist,
+    'grndHt': grndHt, 
+    'terType' : terType,
+    'obsHt': obsHt,
+    'obsType': obsType
+	
+   
+};
+
+
+
+$.ajax({
+        url: "midpoints.php",
+        type: "post",
+        data: { myNumber: details},
+        success: function (data) {
+          $('body').html(data);
+
+        },
+        error: function() {
+                  alert('failure');;
+        }//end ajax
+
+
+    });
+
+};//end editMidpoints()
+
+
+function cancelMidpoints(){
+
+var name = $('#nameval').text();
+
+var details = {
+
+    'name': name
+};
+
+
+
+$.ajax({
+        url: "midpoints.php",
+        type: "post",
+        data: { myNumber: details},
+        success: function (data) {
+          $('body').html(data);
+
+        },
+        error: function() {
+                  alert('failure');;
+        }
+
+
+    });//end ajax
+
+
+};//end cancelMidpoints()
+
+</script>
+</head>
+<body>3<br>0<br>52.00<br>Rough rock<br>0.00<br>None<br>
+
+mdpt  is3UPDATE pt_midpoints SET mdpt_terrain_type= 'Rough rock',obs_height= 0.00,obs_type= ' None ' WHERE mdpt_id = 3
+
+
+
+
+
+
+
+<h1>Welcome to the Path Midpoint Edit Page </h1><br>
+
+<h2>To edit a path enter the data in the correct fields and press submit</h2>
+
+<label>Midpoint Selected :3 </label><label id="nameval">3</label><br>
+
+
+
+
+	<style>
+		#details {
+			margin-top: 1pc;
+			border: 1px solid black;
+			width: 40pc;
+			padding: 5px;
+		}
+
+		;
+	</style>
+
+
+
+
+
+	<script>
+		$.post("getPath.php", onNewPost);
+
+		var onNewPost = function(response) {
+			if (response.status == "OK") {
+
+				$("#txtHint2").html("<form id = 'details'><label>Path Name : </label><label id ='pathName'></label></br></br><label>Beginning Midpoint Distance : </label><label id ='MdptBgnPathDist'></label></br></br><label> Midpoint Ground Height :</label><input type ='text' id ='MdptGrndHt'></input></br></br><label>Midpoint Terrain Type : </label><input type ='text' id ='MdptTerrainType' style = 'width:20pc;'></input></br></br><label>Midpoint Obstruction Height : </label><input type ='text' id ='MdptObsHt' style = 'width:20pc;'></input></br></br><label>Midpoint Obstruction Terrain Type : </label><input type ='text' id ='MdptObsType' style = 'width:20pc;'></input></br></br><input type='button' class 'button' value='update' onclick='editMidpoints()'></input><input type ='button' value ='cancel' onclick='cancelMidpoints()' style = 'margin-left:1pc;'></input></form>");
+
+
+				var r = "3";
+				console.log("r is :" + r);
+				console.log(response);
+				
+				
+				$("#pathName").text(response[2][r].pt_id);
+				$("#MdptBgnPathDist").text(response[2][r].mdpt_bgn_path_dist);
+				$("#MdptGrndHt").attr("value", response[2][r].mdpt_ground_height);
+				$("#MdptTerrainType").attr("value", response[2][r].mdpt_terrain_type);
+				$("#MdptObsHt").attr("value", response[2][r].obs_height);
+				$("#MdptObsType").attr("value", response[2][r].obs_type);
+
+
+			} //end if
+
+
+
+
+		}; //end new post
+
+
+		$.get("getPath.php", onNewPost);
+	</script>
+
+
+
+
+
+	<div id="txtHint2"><form id="details"><label>Path Name : </label><label id="pathName">1</label><br><br><label>Beginning Midpoint Distance : </label><label id="MdptBgnPathDist">0.40</label><br><br><label> Midpoint Ground Height :</label><input type="text" id="MdptGrndHt" value="52.00"><br><br><label>Midpoint Terrain Type : </label><input type="text" id="MdptTerrainType" style="width:20pc;" value="Rough dick"><br><br><label>Midpoint Obstruction Height : </label><input type="text" id="MdptObsHt" style="width:20pc;" value="0.00"><br><br><label>Midpoint Obstruction Terrain Type : </label><input type="text" id="MdptObsType" style="width:20pc;" value="None"><br><br><input type="button" class="" 'button'="" value="update" onclick="editMidpoints()"><input type="button" value="cancel" onclick="cancelMidpoints()" style="margin-left:1pc;"></form></div>
+	<br><br>
+
+	
+
+
+
+
+
+
+</body></html>
