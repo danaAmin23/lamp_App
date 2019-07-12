@@ -39,7 +39,7 @@ if (!$con) {
 
 
 $sql="SELECT * FROM paths WHERE pt_id = 7 ";
-$sql = "wtf";
+$sql = "hey";
 echo $sql;
 $result = mysqli_query($con,$sql);
 
